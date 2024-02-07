@@ -17,6 +17,7 @@ namespace Login_App_Console
                 Console.WriteLine("Username and/or password are empty. Please try again.");
                 User user = new User();
                 user.Register();
+                return;
             }
             else
             {
@@ -80,7 +81,7 @@ namespace Login_App_Console
                         }
                         break;
                     }
-                    
+
                 }
 
                 if (!isFound)
@@ -90,9 +91,9 @@ namespace Login_App_Console
                     Account account = new Account();
                     account.Login();
                 }
-            }   
+            }
         }
 
-        
+
     }
 }

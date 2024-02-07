@@ -14,7 +14,7 @@ namespace Login_App_Console
         {
             Console.WriteLine("\nRegister a new user");
             Console.WriteLine("------------------------------");
-            
+
             Console.Write("Enter username: ");
             string? username = Console.ReadLine();
 
@@ -27,42 +27,46 @@ namespace Login_App_Console
 
         public void UserMenu()
         {
-            string? selection;
-            bool validSelection = false;
-
-            Account account = new Account();
-            User user = new User();
+            string? selection = string.Empty;
 
             do
             {
-                Console.WriteLine("\n+-----------------------------------+");
-                Console.WriteLine("|                                   |");
-                Console.WriteLine("| 1: Log out                        |");
-                Console.WriteLine("|                                   |");
-                Console.WriteLine("+-----------------------------------+");
-
-                Console.Write("\nEnter your selection: ");
-                selection = Console.ReadLine();
-
-                // Validate the selection
-                while (!validSelection)
-                {
-                    if (selection != "1")
-                    {
-                        validSelection = false;
-                        Console.Write("This is not a valid value! Enter your selection: ");
-                        selection = Console.ReadLine();
-                    }
-                    else
-                    {
-                        validSelection = true;
-                    }
-                }
-
-                
+                // Display the menu
+                selection = DisplayUserMenu(selection);
             } while (selection != "1");
 
             Console.WriteLine("\nYou have successfully logged out!");
+        }
+
+        private string DisplayUserMenu(string? selection)
+        {
+            Console.WriteLine("\n+-----------------------------------+");
+            Console.WriteLine("|                                   |");
+            Console.WriteLine("| 1: Log out                        |");
+            Console.WriteLine("|                                   |");
+            Console.WriteLine("+-----------------------------------+");
+
+            Console.Write("\nEnter your selection: ");
+            selection = Console.ReadLine();
+
+            // Validate the selection
+            bool validSelection = false;
+
+            while (!validSelection)
+            {
+                if (selection != "1")
+                {
+                    validSelection = false;
+                    Console.Write("This is not a valid value! Enter your selection: ");
+                    selection = Console.ReadLine();
+                }
+                else
+                {
+                    validSelection = true;
+                }
+            }
+
+            return selection;
         }
     }
 }
